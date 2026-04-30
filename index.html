@@ -3,408 +3,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dương Dung | Bao bì Công nghiệp & Xử lý Môi trường</title>
+    <title>Dương Dung | Giải Pháp Bao Bì Công Nghiệp & Xử Lý Môi Trường</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Thư viện hiển thị 3D -->
+    
+    <!-- Thư viện 3D Model Viewer -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <!-- Thư viện hiệu ứng AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Tùy chỉnh thanh cuộn cho đẹp mắt */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; }
+        ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+        html { scroll-behavior: smooth; }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body class="bg-gray-50 text-gray-800 font-sans overflow-x-hidden">
 
-    <!-- Navigation -->
-    <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
+    <!-- Header & Navigation (Hiệu ứng Kính Mờ) -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-sm p-4 sticky top-0 z-50 transition-all border-b border-gray-100">
         <div class="container mx-auto flex justify-between items-center">
             <!-- Logo -->
-            <a href="#" class="text-3xl font-black text-blue-900 tracking-tighter">DUONGDUNG</a>
+            <a href="#" class="text-3xl font-black text-blue-900 tracking-tighter flex items-center gap-2">
+                <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
+                DUONGDUNG
+            </a>
             
-            <!-- Menu Desktop (Ẩn trên Mobile) -->
+            <!-- Menu Desktop -->
             <ul class="hidden md:flex space-x-8 font-medium text-gray-600">
                 <li class="hover:text-blue-600 cursor-pointer transition">Trang chủ</li>
                 <li class="hover:text-blue-600 cursor-pointer transition">Sản phẩm</li>
-                <li class="hover:text-blue-600 cursor-pointer transition">Lĩnh vực hoạt động</li>
+                <li class="hover:text-blue-600 cursor-pointer transition">Năng lực xử lý</li>
                 <li class="hover:text-blue-600 cursor-pointer transition">Liên hệ</li>
             </ul>
             
-            <!-- Nút Nhận Báo Giá Desktop -->
-            <button onclick="openModal()" class="hidden md:block bg-blue-600 text-white px-6 py-2.5 rounded-md hover:bg-blue-700 transition font-semibold shadow-md">Nhận Báo Giá</button>
+            <button onclick="openModal()" class="hidden md:block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2.5 rounded-lg hover:shadow-lg hover:-translate-y-0.5 transition-all font-semibold shadow-md">Nhận Báo Giá</button>
             
-            <!-- Nút Hamburger Mobile (Chỉ hiện trên Mobile) -->
+            <!-- Menu Button (Mobile) -->
             <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-blue-900 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
             </button>
         </div>
 
-        <!-- Menu Mobile Thả Xuống (Ẩn mặc định) -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 mt-4 pb-4">
-            <ul class="flex flex-col space-y-4 font-medium text-gray-600 text-center pt-4">
-                <li class="hover:text-blue-600 cursor-pointer transition">Trang chủ</li>
-                <li class="hover:text-blue-600 cursor-pointer transition">Sản phẩm</li>
-                <li class="hover:text-blue-600 cursor-pointer transition">Lĩnh vực hoạt động</li>
-                <li class="hover:text-blue-600 cursor-pointer transition">Liên hệ</li>
-                <!-- Nút Báo Giá trong Menu Mobile -->
+        <!-- Dropdown Mobile -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 mt-4 pb-6 absolute w-full left-0 shadow-xl">
+            <ul class="flex flex-col space-y-4 font-medium text-gray-600 text-center pt-4 px-4">
+                <li class="hover:text-blue-600 cursor-pointer transition py-2 bg-gray-50 rounded-md">Trang chủ</li>
+                <li class="hover:text-blue-600 cursor-pointer transition py-2 bg-gray-50 rounded-md">Sản phẩm</li>
+                <li class="hover:text-blue-600 cursor-pointer transition py-2 bg-gray-50 rounded-md">Năng lực xử lý</li>
+                <li class="hover:text-blue-600 cursor-pointer transition py-2 bg-gray-50 rounded-md">Liên hệ</li>
                 <li>
-                    <button onclick="openModal(); closeMobileMenu()" class="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition font-bold shadow-md w-11/12 mx-auto">Nhận Báo Giá</button>
+                    <button onclick="openModal(); closeMobileMenu()" class="bg-blue-600 text-white px-8 py-3.5 rounded-lg hover:bg-blue-700 transition font-bold shadow-md w-full mt-2">Nhận Báo Giá Ngay</button>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative bg-slate-900 text-white h-[85vh] flex items-center justify-center">
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-slate-900 opacity-90"></div>
+    <!-- Hero Section (Gradient & Zoom in) -->
+    <section class="relative bg-slate-900 text-white h-[85vh] flex items-center justify-center overflow-hidden">
+        <!-- Nền họa tiết lưới mờ -->
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="absolute inset-0 bg-gradient-to-tr from-blue-900/90 to-slate-900/90"></div>
         
-        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">Giải Pháp Bao Bì Công Nghiệp Toàn Diện</h1>
-            <p class="text-lg md:text-xl mb-10 text-gray-300 font-light">Gần 20 năm kinh nghiệm cung cấp Thùng phuy sắt, nhựa và Bồn IBC 1000L chất lượng cao. Chuẩn mực An Toàn - Bền Vững - Tiết Kiệm.</p>
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto" data-aos="zoom-in" data-aos-duration="1000">
+            <!-- Chữ dùng hiệu ứng Gradient cực xịn -->
+            <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-200 to-cyan-400 drop-shadow-lg">
+                Giải Pháp Bao Bì Công Nghiệp Toàn Diện
+            </h1>
+            <p class="text-lg md:text-2xl mb-10 text-gray-300 font-light max-w-3xl mx-auto">Gần 20 năm kinh nghiệm cung cấp Thùng phuy và Bồn IBC 1000L chất lượng cao. Chuẩn mực <span class="font-bold text-white">An Toàn - Bền Vững - Tiết Kiệm</span>.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <button class="bg-blue-500 hover:bg-blue-400 px-8 py-3.5 rounded-md text-lg font-bold transition shadow-lg text-white">Xem Sản Phẩm</button>
-                <!-- Nút gọi Modal -->
-                <button onclick="openModal()" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 px-8 py-3.5 rounded-md text-lg font-bold transition">Nhận Báo Giá Nhanh</button>
+                <button class="bg-blue-600 hover:bg-blue-500 hover:scale-105 px-8 py-4 rounded-lg text-lg font-bold transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] text-white flex items-center justify-center">
+                    Xem Sản Phẩm
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </button>
+                <button onclick="openModal()" class="bg-transparent border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 hover:scale-105 px-8 py-4 rounded-lg text-lg font-bold transition-all">Nhận Báo Giá Nhanh</button>
             </div>
         </div>
     </section>
 
     <!-- Product Grid Section -->
-    <section class="py-20 bg-white">
+    <section class="py-24 bg-white relative">
+        <!-- Decoration mờ -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -z-10"></div>
+        
         <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Danh Mục Sản Phẩm Nổi Bật</h2>
-                <div class="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
-                <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">Cung cấp đa dạng các loại bao bì công nghiệp, đáp ứng tiêu chuẩn khắt khe về lưu trữ và vận chuyển.</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Danh Mục <span class="text-blue-600">Sản Phẩm</span> Nổi Bật</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-400 mx-auto rounded-full"></div>
+                <p class="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">Cung cấp đa dạng các loại bao bì công nghiệp, đáp ứng tiêu chuẩn khắt khe về lưu trữ hóa chất và vận chuyển nội địa/xuất khẩu.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
                 
                 <!-- Card 1: Thùng Phuy Sắt (3D) -->
-                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 border border-gray-100 flex flex-col">
-                    <div class="h-72 w-full bg-white relative">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-72 w-full bg-slate-50 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-5 transition-opacity z-0"></div>
                         <model-viewer 
                             src="https://cdn.jsdelivr.net/gh/giahao99vn/duongdung/phisat.glb" 
                             alt="Mô hình 3D Thùng Phuy Sắt 220L Dương Dung" 
-                            auto-rotate 
-                            camera-controls 
-                            rotation-per-second="30deg"
-                            interaction-prompt="hover"
-                            shadow-intensity="1"
-                            class="w-full h-full bg-transparent outline-none cursor-grab active:cursor-grabbing">
+                            auto-rotate camera-controls rotation-per-second="30deg" interaction-prompt="hover" shadow-intensity="1.5" exposure="1.2"
+                            class="w-full h-full bg-transparent outline-none cursor-grab active:cursor-grabbing relative z-10">
                         </model-viewer>
-
-                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded shadow-md z-10 flex items-center">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-md z-20 flex items-center animate-pulse">
                             <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"></path></svg>
-                            Tương tác 3D
+                            Xoay 3D
                         </div>
                     </div>
-                    
-                    <div class="p-6 bg-gray-50 flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Thùng Phuy Sắt 220L</h3>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Thùng phuy mới 100% hoặc qua xử lý sạch. Phù hợp đựng hóa chất, dung môi, dầu nhớt.</p>
-                        <div class="flex justify-between items-center mt-auto">
-                            <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
-                            <button onclick="openModal()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Nhận Giá Tốt</button>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Thùng Phuy Sắt 220L</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2 leading-relaxed">Sản phẩm mới 100% hoặc qua phục hồi chuẩn an toàn. Độ dày thép tối ưu, chống rò rỉ tuyệt đối. Phù hợp đựng hóa chất, dung môi, dầu nhớt.</p>
+                        <div class="flex justify-between items-center mt-auto border-t border-gray-100 pt-4">
+                            <span class="text-blue-600 font-black text-sm flex items-center"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>0903.716.490</span>
+                            <button onclick="openModal()" class="bg-slate-900 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-colors shadow-md">Nhận Giá Sỉ</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 2: Thùng Phuy Nhựa (3D) -->
-                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 border border-gray-100 flex flex-col">
-                    <div class="h-72 w-full bg-white relative">
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-72 w-full bg-slate-50 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-5 transition-opacity z-0"></div>
                         <model-viewer 
                             src="https://cdn.jsdelivr.net/gh/giahao99vn/duongdung/phinhua.glb" 
                             alt="Mô hình 3D Thùng Phuy Nhựa 220L Dương Dung" 
-                            auto-rotate 
-                            camera-controls 
-                            rotation-per-second="30deg"
-                            interaction-prompt="hover"
-                            shadow-intensity="1"
-                            class="w-full h-full bg-transparent outline-none cursor-grab active:cursor-grabbing">
+                            auto-rotate camera-controls rotation-per-second="30deg" interaction-prompt="hover" shadow-intensity="1.5" exposure="1.2"
+                            class="w-full h-full bg-transparent outline-none cursor-grab active:cursor-grabbing relative z-10">
                         </model-viewer>
-
-                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded shadow-md z-10 flex items-center">
+                        <div class="absolute top-4 right-4 bg-gradient-to-r from-red-600 to-pink-600 text-white text-xs font-bold px-3 py-1.5 rounded-md shadow-md z-20 flex items-center animate-pulse">
                             <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"></path></svg>
-                            Tương tác 3D
+                            Xoay 3D
                         </div>
                     </div>
-                    
-                    <div class="p-6 bg-gray-50 flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Thùng Phuy Nhựa 220L</h3>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Đa dạng dung tích từ 30L đến 220L. Chất liệu nhựa HDPE nguyên sinh, chống ăn mòn hóa học.</p>
-                        <div class="flex justify-between items-center mt-auto">
-                            <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
-                            <button onclick="openModal()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Nhận Giá Tốt</button>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Thùng Phuy Nhựa 220L</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2 leading-relaxed">Chất liệu nhựa HDPE nguyên sinh siêu bền. Đa dạng kiểu dáng (nắp kín/nắp hở). Chống ăn mòn hóa học, đạt tiêu chuẩn an toàn thực phẩm.</p>
+                        <div class="flex justify-between items-center mt-auto border-t border-gray-100 pt-4">
+                            <span class="text-blue-600 font-black text-sm flex items-center"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>0903.716.490</span>
+                            <button onclick="openModal()" class="bg-slate-900 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-colors shadow-md">Nhận Giá Sỉ</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Card 3: Bồn IBC 1000L -->
-                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border border-gray-100 flex flex-col">
-                    <div class="h-64 bg-gray-200 flex items-center justify-center">
-                        <span class="text-gray-500 font-medium">[Khu vực chờ mô hình Bồn IBC 1000L]</span>
+                <div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-72 w-full bg-slate-100 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-5 transition-opacity z-0"></div>
+                        <!-- Nơi này chờ đặt model 3D mới của bạn -->
+                        <div class="text-center">
+                            <svg class="w-16 h-16 mx-auto text-gray-300 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+                            <span class="text-gray-400 font-medium text-sm">Chờ Model 3D Bồn IBC</span>
+                        </div>
                     </div>
-                    <div class="p-6 flex-grow">
-                        <h3 class="text-xl font-bold text-gray-900 mb-2">Bồn Nhựa IBC 1000L</h3>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Bồn IBC Tank 1000 lít có khung thép mạ kẽm bảo vệ. Thiết kế tối ưu cho xe nâng, chuyên dụng lưu trữ khối lượng lớn.</p>
-                        <div class="flex justify-between items-center mt-auto">
-                            <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
-                            <button onclick="openModal()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Nhận Giá Tốt</button>
+                    <div class="p-8 flex-grow flex flex-col">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Bồn Nhựa IBC 1000L</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2 leading-relaxed">Bồn IBC Tank 1000 lít thiết kế khung thép mạ kẽm bảo vệ siêu chắc chắn. Pallet thép/nhựa/gỗ tối ưu cho xe nâng, chuyên dụng lưu trữ khối lượng lớn.</p>
+                        <div class="flex justify-between items-center mt-auto border-t border-gray-100 pt-4">
+                            <span class="text-blue-600 font-black text-sm flex items-center"><svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>0903.716.490</span>
+                            <button onclick="openModal()" class="bg-slate-900 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg text-sm font-bold transition-colors shadow-md">Nhận Giá Sỉ</button>
                         </div>
                     </div>
                 </div>
 
             </div>
-            
-            <!-- Nút Xem thêm -->
-            <div class="text-center mt-12">
-                <button class="text-blue-600 font-bold hover:text-blue-800 transition inline-flex items-center justify-center text-lg">
-                    Xem toàn bộ danh mục sản phẩm
-                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                </button>
-            </div>
         </div>
     </section>
 
-    <!-- About Us & Stats Section -->
-    <section class="py-20 bg-slate-900 text-white">
-        <div class="container mx-auto px-4 max-w-6xl">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Đối Tác Chiến Lược Về Bao Bì & Môi Trường</h2>
-                    <div class="w-20 h-1 bg-blue-500 mb-8 rounded"></div>
-                    <p class="text-gray-300 text-lg leading-relaxed mb-6">Từ năm 2007, Dương Dung đã không ngừng vươn lên trở thành đơn vị tiên phong tại Việt Nam trong lĩnh vực cung ứng, phục hồi bao bì công nghiệp và xử lý chất thải nguy hại.</p>
-                    <p class="text-gray-300 text-lg leading-relaxed mb-8">Chúng tôi sở hữu hệ thống kho bãi rộng lớn, dây chuyền xử lý hiện đại cùng đội ngũ chuyên môn cao, cam kết đáp ứng mọi tiêu chuẩn khắt khe nhất của các tập đoàn trong và ngoài nước.</p>
-                    <button class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-md font-bold transition shadow-lg">Xem Hồ Sơ Năng Lực</button>
+    <!-- About Us & Stats Section (Hiệu ứng đếm số) -->
+    <section class="py-24 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Đồ họa chìm -->
+        <div class="absolute -right-20 top-0 w-96 h-96 bg-blue-600 rounded-full blur-[100px] opacity-20"></div>
+        <div class="absolute -left-20 bottom-0 w-96 h-96 bg-cyan-600 rounded-full blur-[100px] opacity-20"></div>
+
+        <div class="container mx-auto px-4 max-w-6xl relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-16">
+                
+                <!-- Nội dung giới thiệu -->
+                <div class="md:w-1/2" data-aos="fade-right">
+                    <h2 class="text-3xl md:text-5xl font-black mb-6 tracking-tight leading-tight">Đối Tác Chiến Lược Về <span class="text-blue-400">Bao Bì & Môi Trường</span></h2>
+                    <div class="w-20 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-400 mb-8 rounded"></div>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6 font-light">
+                        Từ năm 2007, Dương Dung tự hào là đơn vị tiên phong tại Việt Nam, mang đến chuỗi cung ứng tuần hoàn: Thu gom - Phục hồi bao bì công nghiệp và Xử lý chất thải nguy hại chuyên nghiệp.
+                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-10 font-light">
+                        Với hệ thống kho bãi chuẩn quốc tế và dây chuyền xử lý tự động hóa, chúng tôi tự tin đáp ứng những tiêu chuẩn kiểm định khắt khe nhất của các tập đoàn FDI đa quốc gia.
+                    </p>
+                    <button class="bg-transparent border-2 border-white hover:bg-white hover:text-slate-900 px-8 py-3.5 rounded-lg font-bold transition-all shadow-lg flex items-center">
+                        Tải Hồ Sơ Năng Lực 
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    </button>
                 </div>
-                <div class="md:w-1/2 grid grid-cols-2 gap-6 w-full">
-                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 text-center">
-                        <p class="text-4xl font-black text-blue-400 mb-2">15+</p>
-                        <p class="text-gray-400 font-medium text-sm uppercase tracking-wider">Năm Kinh Nghiệm</p>
+
+                <!-- Các con số thống kê (Animated Counters) -->
+                <div class="md:w-1/2 grid grid-cols-2 gap-6 w-full" data-aos="fade-left">
+                    <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 text-center hover:-translate-y-2 transition-transform duration-300">
+                        <p class="text-5xl font-black text-cyan-400 mb-2 font-mono"><span class="counter" data-target="15">0</span>+</p>
+                        <p class="text-gray-300 font-bold text-sm uppercase tracking-widest">Năm Kinh Nghiệm</p>
                     </div>
-                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 text-center">
-                        <p class="text-4xl font-black text-blue-400 mb-2">5000+</p>
-                        <p class="text-gray-400 font-medium text-sm uppercase tracking-wider">Đối Tác B2B</p>
+                    <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 text-center hover:-translate-y-2 transition-transform duration-300">
+                        <p class="text-5xl font-black text-blue-400 mb-2 font-mono"><span class="counter" data-target="5000">0</span>+</p>
+                        <p class="text-gray-300 font-bold text-sm uppercase tracking-widest">Đối Tác B2B</p>
                     </div>
-                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 text-center">
-                        <p class="text-4xl font-black text-blue-400 mb-2">100%</p>
-                        <p class="text-gray-400 font-medium text-sm uppercase tracking-wider">Đạt Chuẩn An Toàn</p>
+                    <div class="bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 text-center hover:-translate-y-2 transition-transform duration-300">
+                        <p class="text-5xl font-black text-blue-400 mb-2 font-mono"><span class="counter" data-target="100">0</span>%</p>
+                        <p class="text-gray-300 font-bold text-sm uppercase tracking-widest">Đạt Chuẩn An Toàn</p>
                     </div>
-                    <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 text-center">
-                        <p class="text-4xl font-black text-blue-400 mb-2">24/7</p>
-                        <p class="text-gray-400 font-medium text-sm uppercase tracking-wider">Hỗ Trợ Vận Tải</p>
+                    <div class="bg-gradient-to-br from-blue-600 to-cyan-600 p-8 rounded-2xl border border-blue-500 text-center shadow-[0_0_30px_rgba(37,99,235,0.3)] hover:-translate-y-2 transition-transform duration-300">
+                        <p class="text-5xl font-black text-white mb-2 font-mono">24/7</p>
+                        <p class="text-blue-100 font-bold text-sm uppercase tracking-widest">Đội Xe Vận Tải</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
     <!-- Footer Section -->
-    <footer class="bg-gray-100 text-gray-700 pt-16 pb-8 border-t border-gray-200">
+    <footer class="bg-white text-gray-700 pt-20 pb-10 border-t border-gray-200">
         <div class="container mx-auto px-4 max-w-6xl">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Thông tin công ty -->
                 <div class="lg:col-span-2">
-                    <h3 class="text-2xl font-black text-blue-900 mb-4 tracking-tighter">DUONGDUNG</h3>
-                    <p class="text-gray-600 mb-4 pr-4">Công ty TNHH Thương Mại - Sản Xuất Dương Dung chuyên cung cấp giải pháp bao bì công nghiệp (thùng phuy, bồn IBC) và dịch vụ xử lý môi trường chuyên nghiệp.</p>
-                    <div class="flex flex-col space-y-2">
-                        <p class="flex items-start"><span class="font-bold mr-2 w-20">Trụ sở:</span> 83 Đ. Hiền Vương, Phường Phú Thạnh, Quận Tân Phú, Hồ Chí Minh</p>
-                        <p class="flex items-start"><span class="font-bold mr-2 w-20">MST:</span> 0305282223</p>
-                        <p class="flex items-start"><span class="font-bold mr-2 w-20">Hotline:</span> <a href="tel:0903716490" class="text-blue-600 font-bold">0903 716 490</a></p>
-                        <p class="flex items-start"><span class="font-bold mr-2 w-20">Email:</span> duongdung_tt@yahoo.com.vn</p>
+                    <h3 class="text-3xl font-black text-blue-900 mb-6 tracking-tighter flex items-center">
+                        <svg class="w-8 h-8 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
+                        DUONGDUNG
+                    </h3>
+                    <p class="text-gray-600 mb-6 pr-4 leading-relaxed">Công ty TNHH Thương Mại - Sản Xuất Dương Dung tự hào mang đến các giải pháp bao bì công nghiệp ưu việt và dịch vụ xử lý môi trường đạt chuẩn quốc gia.</p>
+                    <div class="flex flex-col space-y-3">
+                        <p class="flex items-start"><span class="font-bold mr-2 w-20 text-gray-900">Trụ sở:</span> 83 Đ. Hiền Vương, Phường Phú Thạnh, Quận Tân Phú, Hồ Chí Minh</p>
+                        <p class="flex items-start"><span class="font-bold mr-2 w-20 text-gray-900">MST:</span> 0305282223</p>
+                        <p class="flex items-start"><span class="font-bold mr-2 w-20 text-gray-900">Hotline:</span> <a href="tel:0903716490" class="text-blue-600 font-bold hover:underline">0903 716 490</a></p>
+                        <p class="flex items-start"><span class="font-bold mr-2 w-20 text-gray-900">Email:</span> duongdung_tt@yahoo.com.vn</p>
                     </div>
                 </div>
+
+                <!-- Danh mục -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 uppercase">Danh Mục</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-blue-600 transition">Thùng Phuy Sắt</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Thùng Phuy Nhựa</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Bồn Nhựa IBC 1000L</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Lu Nhựa Công Nghiệp</a></li>
-                        <li><a href="#" class="hover:text-blue-600 transition">Thu Mua Phế Liệu</a></li>
+                    <h4 class="text-lg font-black text-gray-900 mb-6 uppercase tracking-wider border-b-2 border-blue-600 pb-2 inline-block">Danh Mục</h4>
+                    <ul class="space-y-3 font-medium">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thùng Phuy Sắt</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thùng Phuy Nhựa</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Bồn Nhựa IBC 1000L</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Lu / Can Công Nghiệp</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thu Mua Phế Liệu</a></li>
                     </ul>
                 </div>
-                <!-- Cột 3: Bản đồ (Google Maps thật) -->
+
+                <!-- Bản đồ -->
                 <div>
-                    <h4 class="text-lg font-bold text-gray-900 mb-4 uppercase">Vị Trí Kho</h4>
-                    <!-- Khung chứa bản đồ -->
-                    <div class="h-48 w-full rounded-lg overflow-hidden border border-gray-300 shadow-inner">
+                    <h4 class="text-lg font-black text-gray-900 mb-6 uppercase tracking-wider border-b-2 border-blue-600 pb-2 inline-block">Vị Trí Kho</h4>
+                    <div class="h-48 w-full rounded-xl overflow-hidden shadow-inner ring-1 ring-gray-200 group relative">
+                        <div class="absolute inset-0 bg-blue-900/10 pointer-events-none group-hover:opacity-0 transition"></div>
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d291.2903411038393!2d106.5981006474929!3d10.802115818023902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b8e92b6254d%3A0x2ce50199b116add5!2zQ8O0bmcgVHkgVG5oaCBUbSAmIFN4IETGsMahbmcgRHVuZw!5e0!3m2!1svi!2s!4v1777563587906!5m2!1svi!2s"
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
-                    <!-- Chú thích -->
-                    <p class="text-sm text-gray-600 mt-3 text-center flex items-center justify-center font-medium">
+                    <p class="text-sm text-gray-600 mt-4 text-center flex items-center justify-center font-bold bg-gray-50 py-2 rounded-lg">
                         <svg class="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
-                        Hỗ trợ điều xe bốc dỡ 24/7
+                        Kho Bãi: Hỗ trợ xe bốc dỡ 24/7
                     </p>
                 </div>
             </div>
-            <div class="border-t border-gray-300 pt-8 text-center text-sm text-gray-500">
+
+            <!-- Bản quyền & Tác giả -->
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                 <p>&copy; 2026 Công ty TNHH TM - SX Dương Dung. Đã đăng ký bản quyền.</p>
-                <p class="mt-1 font-semibold text-blue-900">Thiết kế lại bởi GIAHAOONE</p>
+                <p class="mt-2 md:mt-0">Thiết kế & Tối ưu bởi <a href="https://giahao99vn.github.io/giahaoone" target="_blank" class="font-black text-blue-900 hover:text-blue-600 transition">GIAHAOONE</a></p>
             </div>
         </div>
     </footer>
 
     <!-- ============================================== -->
-    <!-- MODAL BÁO GIÁ NHANH (Ẩn mặc định) -->
+    <!-- NÚT LIÊN HỆ NỔI (ZALO & ĐIỆN THOẠI) -->
+    <!-- ============================================== -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-4">
+        <!-- Nút Zalo -->
+        <a href="https://zalo.me/0903716490" target="_blank" class="group flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)] hover:bg-blue-600 hover:scale-110 transition-all duration-300 relative">
+            <span class="font-black text-xl tracking-tighter">Zalo</span>
+            <span class="absolute right-16 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none drop-shadow-md">Chat Zalo</span>
+        </a>
+        <!-- Nút Gọi Điện -->
+        <a href="tel:0903716490" class="group flex items-center justify-center w-14 h-14 bg-red-600 text-white rounded-full shadow-[0_0_15px_rgba(220,38,38,0.5)] hover:bg-red-700 hover:scale-110 transition-all duration-300 relative">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping"></span>
+            <svg class="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            <span class="absolute right-16 bg-gray-900 text-white text-xs font-bold px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none drop-shadow-md">0903.716.490</span>
+        </a>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- MODAL BÁO GIÁ NHANH TÍCH HỢP GOOGLE SHEETS -->
     <!-- ============================================== -->
     <div id="quoteModal" class="fixed inset-0 z-[100] hidden items-center justify-center">
-        <!-- Lớp phủ nền mờ -->
-        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" id="modalOverlay"></div>
+        <!-- Nền mờ Glassmorphism -->
+        <div class="absolute inset-0 bg-slate-900/40 backdrop-blur-sm transition-opacity" id="modalOverlay"></div>
         
-        <!-- Khung Form Báo Giá -->
-        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-6 sm:p-8 transform transition-all scale-100">
-            <!-- Nút Tắt (X) -->
-            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-8 transform transition-all border border-white/20">
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 hover:rotate-90 transition-all duration-300 bg-gray-100 hover:bg-red-50 p-1.5 rounded-full">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
 
-            <!-- Tiêu đề Form -->
-            <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Nhận Báo Giá Nhanh</h3>
-            <p class="text-sm text-gray-500 mb-6">Vui lòng để lại thông tin, Dương Dung sẽ liên hệ tư vấn và báo giá sỉ tốt nhất cho bạn.</p>
+            <h3 class="text-3xl font-black text-gray-900 mb-2">Nhận Báo Giá Nhanh</h3>
+            <p class="text-sm text-gray-500 mb-6 font-medium">Vui lòng để lại thông tin, Phòng Kinh Doanh Dương Dung sẽ báo giá sỉ tốt nhất cho bạn trong 5 phút.</p>
 
-            <!-- Nội dung Form -->
-            <form name="submit-to-google-sheet" action="https://script.google.com/macros/s/AKfycbxc8MZ6fTm_w9QVwj5XoOVSBL_dD2m8-gVPhORj-M2pxvBX3S62B-VqOjuCkOGqJrbi/exec" method="POST" class="space-y-4">
+            <form name="submit-to-google-sheet" action="https://script.google.com/macros/s/AKfycbxc8MZ6fTm_w9QVwj5XoOVSBL_dD2m8-gVPhORj-M2pxvBX3S62B-VqOjuCkOGqJrbi/exec" method="POST" class="space-y-5">
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Họ và Tên / Tên Công Ty <span class="text-red-500">*</span></label>
-                    <input type="text" name="Ho_Va_Ten" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: Nguyễn Văn A - Cty TNHH ABC">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Tên Công Ty / Họ Tên <span class="text-red-500">*</span></label>
+                    <input type="text" name="Ho_Va_Ten" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all shadow-sm">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Số Điện Thoại Zalo <span class="text-red-500">*</span></label>
-                    <input type="tel" name="So_Dien_Thoai" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: 0903 716 490">
+                    <input type="tel" name="So_Dien_Thoai" required class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all shadow-sm">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Sản Phẩm Quan Tâm</label>
-                    <select name="San_Pham_Quan_Tam" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition cursor-pointer">
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Sản Phẩm Cần Mua</label>
+                    <select name="San_Pham_Quan_Tam" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all cursor-pointer shadow-sm">
+                        <option value="Bồn Nhựa IBC 1000L">Bồn Nhựa IBC 1000L</option>
                         <option value="Thùng Phuy Sắt 220L">Thùng Phuy Sắt 220L</option>
                         <option value="Thùng Phuy Nhựa 220L">Thùng Phuy Nhựa 220L</option>
-                        <option value="Bồn Nhựa IBC 1000L">Bồn Nhựa IBC 1000L</option>
-                        <option value="Lu Nhựa / Can Nhựa">Lu Nhựa / Can Nhựa</option>
-                        <option value="Thu Mua Phế Liệu / Khác">Thu Mua Phế Liệu / Khác</option>
+                        <option value="Thu Mua Phế Liệu">Dịch vụ Thu Mua Phế Liệu</option>
                     </select>
                 </div>
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Yêu Cầu Chi Tiết (Số lượng, tình trạng...)</label>
-                    <textarea name="Yeu_Cau_Chi_Tiet" rows="3" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: Tôi cần báo giá 50 bồn IBC 1000L mới 100% giao tại Hóc Môn..."></textarea>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Số lượng & Yêu cầu khác</label>
+                    <textarea name="Yeu_Cau_Chi_Tiet" rows="2" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white outline-none transition-all shadow-sm" placeholder="VD: Báo giá 100 bồn giao KCN Sóng Thần..."></textarea>
                 </div>
                 
-                <!-- Nút Gửi -->
-                <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-md transition mt-4 flex justify-center items-center">
-                    <span id="btnText">Gửi Yêu Cầu Báo Giá</span>
-                    <svg id="btnIcon" class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                <button type="submit" id="submitBtn" class="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-black py-4 rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all mt-4 flex justify-center items-center">
+                    <span id="btnText">GỬI YÊU CẦU NGAY</span>
+                    <svg id="btnIcon" class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- JavaScript -->
+    <!-- ============================================== -->
+    <!-- JAVASCRIPT ĐIỀU KHIỂN HỆ THỐNG -->
+    <!-- ============================================== -->
+    <!-- Thư viện AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <script>
+        // 1. Kích hoạt hiệu ứng AOS
+        AOS.init({
+            duration: 800, // Thời gian chạy animation (ms)
+            once: true,    // Chỉ chạy 1 lần khi scroll tới
+            offset: 100    // Khoảng cách kích hoạt
+        });
+
+        // 2. Logic cho Hiệu ứng nhảy số (Counter)
+        const counters = document.querySelectorAll('.counter');
+        const speed = 100; // Tốc độ nhảy số (càng nhỏ càng nhanh)
+
+        const startCounting = (counter) => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const inc = target / speed;
+                
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        };
+
+        // Chờ scroll đến khu vực chữ số mới bắt đầu đếm
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounting(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // 3. Logic điều khiển Mobile Menu & Modal Form
         const modal = document.getElementById('quoteModal');
         const overlay = document.getElementById('modalOverlay');
         const closeBtn = document.getElementById('closeModal');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
 
-        // Hàm mở Popup
         function openModal() {
             modal.classList.remove('hidden');
-            modal.classList.add('flex'); // Dùng flex để căn giữa màn hình
+            modal.classList.add('flex');
         }
 
-        // Hàm đóng Popup
         function closeModal() {
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
 
-        // Bắt sự kiện Modal
-        closeBtn.addEventListener('click', closeModal);
-        overlay.addEventListener('click', closeModal);
-
-        // ==========================================
-        // JavaScript Điều khiển Mobile Menu
-        // ==========================================
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        // Bật/Tắt menu khi bấm nút 3 gạch
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // Hàm tự động đóng menu mobile khi khách bấm nút "Nhận Báo Giá"
         function closeMobileMenu() {
             mobileMenu.classList.add('hidden');
         }
 
-        // ==========================================
-        // Xử lý gửi Form về Google Sheets
-        // ==========================================
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+        mobileMenuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+        // 4. Logic gửi Form về Google Sheets
         const scriptURL = 'https://script.google.com/macros/s/AKfycbxc8MZ6fTm_w9QVwj5XoOVSBL_dD2m8-gVPhORj-M2pxvBX3S62B-VqOjuCkOGqJrbi/exec';
         const form = document.forms['submit-to-google-sheet'];
         const btnText = document.getElementById('btnText');
         const btnIcon = document.getElementById('btnIcon');
 
         form.addEventListener('submit', e => {
-            e.preventDefault(); // Ngăn trình duyệt chuyển trang
-            
-            // Đổi text nút thành Đang gửi...
-            btnText.innerHTML = "Đang gửi dữ liệu...";
+            e.preventDefault();
+            btnText.innerHTML = "ĐANG XỬ LÝ...";
             btnIcon.classList.add('hidden');
 
-            // Gửi dữ liệu ngầm
             fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                 .then(response => {
-                    alert('Cảm ơn bạn! Yêu cầu báo giá đã được gửi thành công.');
-                    form.reset(); // Xóa trắng form
-                    closeModal(); // Đóng popup
-                    
-                    // Khôi phục lại nút
-                    btnText.innerHTML = "Gửi Yêu Cầu Báo Giá";
+                    alert('Cảm ơn bạn! Yêu cầu báo giá đã được gửi thành công. Dương Dung sẽ liên hệ lại ngay!');
+                    form.reset();
+                    closeModal();
+                    btnText.innerHTML = "GỬI YÊU CẦU NGAY";
                     btnIcon.classList.remove('hidden');
                 })
                 .catch(error => {
-                    console.error('Lỗi rồi!', error.message);
-                    alert('Có lỗi xảy ra, vui lòng thử lại sau hoặc gọi trực tiếp Hotline!');
-                    
-                    // Khôi phục lại nút nếu lỗi
-                    btnText.innerHTML = "Gửi Yêu Cầu Báo Giá";
+                    alert('Có lỗi mạng xảy ra. Vui lòng gọi trực tiếp vào Hotline!');
+                    btnText.innerHTML = "GỬI YÊU CẦU NGAY";
                     btnIcon.classList.remove('hidden');
                 })
         });
     </script>
-    <!-- ============================================== -->
-    <!-- NÚT LIÊN HỆ NỔI (ZALO & ĐIỆN THOẠI) -->
-    <!-- ============================================== -->
-    <div class="fixed bottom-6 right-6 z-50 flex flex-col space-y-4">
-        
-        <!-- Nút Zalo -->
-        <a href="https://zalo.me/0903716490" target="_blank" class="group flex items-center justify-center w-14 h-14 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 hover:scale-110 transition-all duration-300 relative">
-            <!-- Chữ Zalo -->
-            <span class="font-black text-xl tracking-tighter">Zalo</span>
-            <!-- Tooltip -->
-            <span class="absolute right-16 bg-gray-800 text-white text-xs font-bold px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                Chat Zalo ngay
-            </span>
-        </a>
-
-        <!-- Nút Gọi Điện (Có hiệu ứng nhấp nháy) -->
-        <a href="tel:0903716490" class="group flex items-center justify-center w-14 h-14 bg-red-600 text-white rounded-full shadow-lg hover:bg-red-700 hover:scale-110 transition-all duration-300 relative">
-            <!-- Hiệu ứng sóng tỏa ra (Pulse) -->
-            <span class="absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75 animate-ping"></span>
-            
-            <!-- Icon Điện thoại -->
-            <svg class="w-6 h-6 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-            </svg>
-
-            <!-- Tooltip -->
-            <span class="absolute right-16 bg-gray-800 text-white text-xs font-bold px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                0903.716.490
-            </span>
-        </a>
-    </div>
-
 </body>
 </html>
