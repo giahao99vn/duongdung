@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dương Dung | Bao bì Công nghiệp & Xử lý Môi trường</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Đưa thư viện model-viewer lên Head để tối ưu load -->
+    <!-- Thư viện hiển thị 3D -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
+    <!-- Navigation -->
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
             <a href="#" class="text-3xl font-black text-blue-900 tracking-tighter">DUONGDUNG</a>
@@ -19,10 +20,12 @@
                 <li class="hover:text-blue-600 cursor-pointer transition">Lĩnh vực hoạt động</li>
                 <li class="hover:text-blue-600 cursor-pointer transition">Liên hệ</li>
             </ul>
-            <button class="bg-blue-600 text-white px-6 py-2.5 rounded-md hover:bg-blue-700 transition font-semibold shadow-md">Nhận Báo Giá</button>
+            <!-- Nút gọi Modal -->
+            <button onclick="openModal()" class="bg-blue-600 text-white px-6 py-2.5 rounded-md hover:bg-blue-700 transition font-semibold shadow-md">Nhận Báo Giá</button>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="relative bg-slate-900 text-white h-[85vh] flex items-center justify-center">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-slate-900 opacity-90"></div>
         
@@ -31,7 +34,8 @@
             <p class="text-lg md:text-xl mb-10 text-gray-300 font-light">Gần 20 năm kinh nghiệm cung cấp Thùng phuy sắt, nhựa và Bồn IBC 1000L chất lượng cao. Chuẩn mực An Toàn - Bền Vững - Tiết Kiệm.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <button class="bg-blue-500 hover:bg-blue-400 px-8 py-3.5 rounded-md text-lg font-bold transition shadow-lg text-white">Xem Sản Phẩm</button>
-                <button class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 px-8 py-3.5 rounded-md text-lg font-bold transition">Gọi Hotline Ngay</button>
+                <!-- Nút gọi Modal -->
+                <button onclick="openModal()" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 px-8 py-3.5 rounded-md text-lg font-bold transition">Nhận Báo Giá Nhanh</button>
             </div>
         </div>
     </section>
@@ -39,17 +43,15 @@
     <!-- Product Grid Section -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <!-- Tiêu đề khu vực -->
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">Danh Mục Sản Phẩm Nổi Bật</h2>
                 <div class="w-24 h-1 bg-blue-600 mx-auto rounded"></div>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-lg">Cung cấp đa dạng các loại bao bì công nghiệp, đáp ứng tiêu chuẩn khắt khe về lưu trữ và vận chuyển.</p>
             </div>
 
-            <!-- Lưới Sản phẩm -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
                 
-                <!-- Card 1: Thùng Phuy Sắt -->
+                <!-- Card 1: Thùng Phuy Sắt (3D) -->
                 <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 border border-gray-100 flex flex-col">
                     <div class="h-72 w-full bg-white relative">
                         <model-viewer 
@@ -71,15 +73,15 @@
                     
                     <div class="p-6 bg-gray-50 flex-grow">
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Thùng Phuy Sắt 220L</h3>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Thùng phuy mới 100% hoặc qua sử dụng xử lý sạch. Phù hợp đựng hóa chất, dung môi, dầu nhớt.</p>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Thùng phuy mới 100% hoặc qua xử lý sạch. Phù hợp đựng hóa chất, dung môi, dầu nhớt.</p>
                         <div class="flex justify-between items-center mt-auto">
                             <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
-                            <button class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Chi Tiết</button>
+                            <button onclick="openModal()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Nhận Giá Tốt</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2: Thùng Phuy Nhựa -->
+                <!-- Card 2: Thùng Phuy Nhựa (3D) -->
                 <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 border border-gray-100 flex flex-col">
                     <div class="h-72 w-full bg-white relative">
                         <model-viewer 
@@ -101,10 +103,10 @@
                     
                     <div class="p-6 bg-gray-50 flex-grow">
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Thùng Phuy Nhựa 220L</h3>
-                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Đa dạng dung tích từ 30L đến 220L. Chất liệu nhựa HDPE nguyên sinh, an toàn thực phẩm và chống ăn mòn.</p>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Đa dạng dung tích từ 30L đến 220L. Chất liệu nhựa HDPE nguyên sinh, chống ăn mòn hóa học.</p>
                         <div class="flex justify-between items-center mt-auto">
                             <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
-                            <button class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Chi Tiết</button>
+                            <button onclick="openModal()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Nhận Giá Tốt</button>
                         </div>
                     </div>
                 </div>
@@ -119,7 +121,7 @@
                         <p class="text-gray-600 text-sm mb-6 line-clamp-2">Bồn IBC Tank 1000 lít có khung thép mạ kẽm bảo vệ. Thiết kế tối ưu cho xe nâng, chuyên dụng lưu trữ khối lượng lớn.</p>
                         <div class="flex justify-between items-center mt-auto">
                             <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
-                            <button class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Chi Tiết</button>
+                            <button onclick="openModal()" class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Nhận Giá Tốt</button>
                         </div>
                     </div>
                 </div>
@@ -140,21 +142,13 @@
     <section class="py-20 bg-slate-900 text-white">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="flex flex-col md:flex-row items-center gap-12">
-                
-                <!-- Nội dung giới thiệu -->
                 <div class="md:w-1/2">
                     <h2 class="text-3xl md:text-4xl font-extrabold mb-6">Đối Tác Chiến Lược Về Bao Bì & Môi Trường</h2>
                     <div class="w-20 h-1 bg-blue-500 mb-8 rounded"></div>
-                    <p class="text-gray-300 text-lg leading-relaxed mb-6">
-                        Từ năm 2007, Dương Dung đã không ngừng vươn lên trở thành đơn vị tiên phong tại Việt Nam trong lĩnh vực cung ứng, phục hồi bao bì công nghiệp và xử lý chất thải nguy hại.
-                    </p>
-                    <p class="text-gray-300 text-lg leading-relaxed mb-8">
-                        Chúng tôi sở hữu hệ thống kho bãi rộng lớn, dây chuyền xử lý hiện đại cùng đội ngũ chuyên môn cao, cam kết đáp ứng mọi tiêu chuẩn khắt khe nhất của các tập đoàn trong và ngoài nước.
-                    </p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-6">Từ năm 2007, Dương Dung đã không ngừng vươn lên trở thành đơn vị tiên phong tại Việt Nam trong lĩnh vực cung ứng, phục hồi bao bì công nghiệp và xử lý chất thải nguy hại.</p>
+                    <p class="text-gray-300 text-lg leading-relaxed mb-8">Chúng tôi sở hữu hệ thống kho bãi rộng lớn, dây chuyền xử lý hiện đại cùng đội ngũ chuyên môn cao, cam kết đáp ứng mọi tiêu chuẩn khắt khe nhất của các tập đoàn trong và ngoài nước.</p>
                     <button class="bg-blue-600 hover:bg-blue-500 text-white px-6 py-3 rounded-md font-bold transition shadow-lg">Xem Hồ Sơ Năng Lực</button>
                 </div>
-
-                <!-- Các con số thống kê -->
                 <div class="md:w-1/2 grid grid-cols-2 gap-6 w-full">
                     <div class="bg-slate-800 p-8 rounded-xl border border-slate-700 text-center">
                         <p class="text-4xl font-black text-blue-400 mb-2">15+</p>
@@ -173,7 +167,6 @@
                         <p class="text-gray-400 font-medium text-sm uppercase tracking-wider">Hỗ Trợ Vận Tải</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -182,8 +175,6 @@
     <footer class="bg-gray-100 text-gray-700 pt-16 pb-8 border-t border-gray-200">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                
-                <!-- Cột 1: Thông tin công ty -->
                 <div class="lg:col-span-2">
                     <h3 class="text-2xl font-black text-blue-900 mb-4 tracking-tighter">DUONGDUNG</h3>
                     <p class="text-gray-600 mb-4 pr-4">Công ty TNHH Thương Mại - Sản Xuất Dương Dung chuyên cung cấp giải pháp bao bì công nghiệp (thùng phuy, bồn IBC) và dịch vụ xử lý môi trường chuyên nghiệp.</p>
@@ -194,8 +185,6 @@
                         <p class="flex items-start"><span class="font-bold mr-2 w-20">Email:</span> duongdung_tt@yahoo.com.vn</p>
                     </div>
                 </div>
-
-                <!-- Cột 2: Liên kết nhanh -->
                 <div>
                     <h4 class="text-lg font-bold text-gray-900 mb-4 uppercase">Danh Mục</h4>
                     <ul class="space-y-2">
@@ -206,8 +195,6 @@
                         <li><a href="#" class="hover:text-blue-600 transition">Thu Mua Phế Liệu</a></li>
                     </ul>
                 </div>
-
-                <!-- Cột 3: Bản đồ (Giả lập) -->
                 <div>
                     <h4 class="text-lg font-bold text-gray-900 mb-4 uppercase">Vị Trí Kho</h4>
                     <div class="bg-gray-300 h-40 w-full rounded-lg flex items-center justify-center border border-gray-400">
@@ -216,14 +203,87 @@
                     <p class="text-xs text-gray-500 mt-2 text-center">Hỗ trợ điều xe bốc dỡ 24/7</p>
                 </div>
             </div>
-
-            <!-- Copyright -->
             <div class="border-t border-gray-300 pt-8 text-center text-sm text-gray-500">
                 <p>&copy; 2026 Công ty TNHH TM - SX Dương Dung. Đã đăng ký bản quyền.</p>
                 <p class="mt-1 font-semibold text-blue-900">Thiết kế lại bởi GIAHAOONE</p>
             </div>
         </div>
     </footer>
+
+    <!-- ============================================== -->
+    <!-- MODAL BÁO GIÁ NHANH (Ẩn mặc định) -->
+    <!-- ============================================== -->
+    <div id="quoteModal" class="fixed inset-0 z-[100] hidden items-center justify-center">
+        <!-- Lớp phủ nền mờ -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" id="modalOverlay"></div>
+        
+        <!-- Khung Form Báo Giá -->
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg mx-4 p-6 sm:p-8 transform transition-all scale-100">
+            <!-- Nút Tắt (X) -->
+            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+
+            <!-- Tiêu đề Form -->
+            <h3 class="text-2xl font-extrabold text-gray-900 mb-2">Nhận Báo Giá Nhanh</h3>
+            <p class="text-sm text-gray-500 mb-6">Vui lòng để lại thông tin, Dương Dung sẽ liên hệ tư vấn và báo giá sỉ tốt nhất cho bạn.</p>
+
+            <!-- Nội dung Form -->
+            <form action="#" method="POST" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Họ và Tên / Tên Công Ty <span class="text-red-500">*</span></label>
+                    <input type="text" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: Nguyễn Văn A - Cty TNHH ABC">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Số Điện Thoại Zalo <span class="text-red-500">*</span></label>
+                    <input type="tel" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: 0903 716 490">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Sản Phẩm Quan Tâm</label>
+                    <select class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition cursor-pointer">
+                        <option value="thung_phuy_sat">Thùng Phuy Sắt 220L</option>
+                        <option value="thung_phuy_nhua">Thùng Phuy Nhựa 220L</option>
+                        <option value="bon_ibc">Bồn Nhựa IBC 1000L</option>
+                        <option value="lu_nhua">Lu Nhựa / Can Nhựa</option>
+                        <option value="dich_vu_khac">Thu Mua Phế Liệu / Khác</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Yêu Cầu Chi Tiết (Số lượng, tình trạng...)</label>
+                    <textarea rows="3" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: Tôi cần báo giá 50 bồn IBC 1000L mới 100% giao tại Hóc Môn..."></textarea>
+                </div>
+                
+                <!-- Nút Gửi -->
+                <button type="button" onclick="alert('Cảm ơn bạn! Yêu cầu báo giá đã được gửi đến ban giám đốc. Chúng tôi sẽ liên hệ lại ngay.')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-md transition mt-4 flex justify-center items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+                    Gửi Yêu Cầu Báo Giá
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript Điều khiển Modal -->
+    <script>
+        const modal = document.getElementById('quoteModal');
+        const overlay = document.getElementById('modalOverlay');
+        const closeBtn = document.getElementById('closeModal');
+
+        // Hàm mở Popup
+        function openModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex'); // Dùng flex để căn giữa màn hình
+        }
+
+        // Hàm đóng Popup
+        function closeModal() {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Bắt sự kiện
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', closeModal);
+    </script>
 
 </body>
 </html>
