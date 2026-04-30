@@ -13,18 +13,42 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-md p-4 sticky top-0 z-50">
         <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
             <a href="#" class="text-3xl font-black text-blue-900 tracking-tighter">DUONGDUNG</a>
+            
+            <!-- Menu Desktop (Ẩn trên Mobile) -->
             <ul class="hidden md:flex space-x-8 font-medium text-gray-600">
                 <li class="hover:text-blue-600 cursor-pointer transition">Trang chủ</li>
                 <li class="hover:text-blue-600 cursor-pointer transition">Sản phẩm</li>
                 <li class="hover:text-blue-600 cursor-pointer transition">Lĩnh vực hoạt động</li>
                 <li class="hover:text-blue-600 cursor-pointer transition">Liên hệ</li>
             </ul>
-            <!-- Nút gọi Modal -->
-            <button onclick="openModal()" class="bg-blue-600 text-white px-6 py-2.5 rounded-md hover:bg-blue-700 transition font-semibold shadow-md">Nhận Báo Giá</button>
+            
+            <!-- Nút Nhận Báo Giá Desktop -->
+            <button onclick="openModal()" class="hidden md:block bg-blue-600 text-white px-6 py-2.5 rounded-md hover:bg-blue-700 transition font-semibold shadow-md">Nhận Báo Giá</button>
+            
+            <!-- Nút Hamburger Mobile (Chỉ hiện trên Mobile) -->
+            <button id="mobileMenuBtn" class="md:hidden text-gray-600 hover:text-blue-900 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menu Mobile Thả Xuống (Ẩn mặc định) -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 mt-4 pb-4">
+            <ul class="flex flex-col space-y-4 font-medium text-gray-600 text-center pt-4">
+                <li class="hover:text-blue-600 cursor-pointer transition">Trang chủ</li>
+                <li class="hover:text-blue-600 cursor-pointer transition">Sản phẩm</li>
+                <li class="hover:text-blue-600 cursor-pointer transition">Lĩnh vực hoạt động</li>
+                <li class="hover:text-blue-600 cursor-pointer transition">Liên hệ</li>
+                <!-- Nút Báo Giá trong Menu Mobile -->
+                <li>
+                    <button onclick="openModal(); closeMobileMenu()" class="bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition font-bold shadow-md w-11/12 mx-auto">Nhận Báo Giá</button>
+                </li>
+            </ul>
         </div>
     </nav>
-
     <!-- Hero Section -->
     <section class="relative bg-slate-900 text-white h-[85vh] flex items-center justify-center">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-slate-900 opacity-90"></div>
@@ -295,6 +319,22 @@
         // Bắt sự kiện
         closeBtn.addEventListener('click', closeModal);
         overlay.addEventListener('click', closeModal);
+
+        // ==========================================
+        // JavaScript Điều khiển Mobile Menu
+        // ==========================================
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        // Bật/Tắt menu khi bấm nút 3 gạch
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Hàm tự động đóng menu mobile khi khách bấm nút "Nhận Báo Giá"
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
     </script>
 
 </body>
