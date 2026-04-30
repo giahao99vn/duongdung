@@ -198,8 +198,61 @@
         </div>
     </section>
 
-    <!-- Footer và Modal (Sẽ giống hệt index.html) -->
-    <!-- TÔI RÚT GỌN CHỖ NÀY ĐỂ BẠN DỄ NHÌN, BẠN HÃY COPY TỪ DÒNG <footer class="bg-white..."> TỚI HẾT FILE index.html CỦA BẠN VÀ DÁN VÀO ĐÂY NHÉ! -->
+ <!-- Footer Section -->
+    <footer class="bg-white text-gray-700 pt-20 pb-10 border-t border-gray-200">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <!-- Thông tin công ty -->
+                <div class="lg:col-span-2">
+                    <h3 class="text-3xl font-black text-blue-900 mb-6 tracking-tighter flex items-center">
+                        <svg class="w-8 h-8 text-blue-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
+                        DUONGDUNG
+                    </h3>
+                    <p class="text-gray-600 mb-6 pr-4 leading-relaxed">Công ty TNHH Thương Mại - Sản Xuất Dương Dung tự hào mang đến các giải pháp bao bì công nghiệp ưu việt và dịch vụ xử lý môi trường đạt chuẩn quốc gia.</p>
+                    <div class="flex flex-col space-y-3">
+                        <p class="flex items-start"><span class="font-bold mr-2 w-20 text-gray-900">Trụ sở:</span> 83 Đ. Hiền Vương, Phường Phú Thạnh, Quận Tân Phú, Hồ Chí Minh</p>
+                        <p class="flex items-start"><span class="font-bold mr-2 w-20 text-gray-900">MST:</span> 0305282223</p>
+                        <p class="flex items-start"><span class="font-bold mr-2 w-20 text-gray-900">Hotline:</span> <a href="tel:0903716490" class="text-blue-600 font-bold hover:underline">0903 716 490</a></p>
+                        <p class="flex items-start"><span class="font-bold mr-2 w-20 text-gray-900">Email:</span> duongdung_tt@yahoo.com.vn</p>
+                    </div>
+                </div>
+
+                <!-- Danh mục -->
+                <div>
+                    <h4 class="text-lg font-black text-gray-900 mb-6 uppercase tracking-wider border-b-2 border-blue-600 pb-2 inline-block">Danh Mục</h4>
+                    <ul class="space-y-3 font-medium">
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thùng Phuy Sắt</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thùng Phuy Nhựa</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Bồn Nhựa IBC 1000L</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Lu / Can Công Nghiệp</a></li>
+                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thu Mua Phế Liệu</a></li>
+                    </ul>
+                </div>
+
+                <!-- Bản đồ -->
+                <div>
+                    <h4 class="text-lg font-black text-gray-900 mb-6 uppercase tracking-wider border-b-2 border-blue-600 pb-2 inline-block">Vị Trí Kho</h4>
+                    <div class="h-48 w-full rounded-xl overflow-hidden shadow-inner ring-1 ring-gray-200 group relative">
+                        <div class="absolute inset-0 bg-blue-900/10 pointer-events-none group-hover:opacity-0 transition"></div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d291.2903411038393!2d106.5981006474929!3d10.802115818023902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b8e92b6254d%3A0x2ce50199b116add5!2zQ8O0bmcgVHkgVG5oaCBUbSAmIFN4IETGsMahbmcgRHVuZw!5e0!3m2!1svi!2s!4v1777563587906!5m2!1svi!2s"
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4 text-center flex items-center justify-center font-bold bg-gray-50 py-2 rounded-lg">
+                        <svg class="w-4 h-4 mr-1 text-red-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg>
+                        Kho Bãi: Hỗ trợ xe bốc dỡ 24/7
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bản quyền & Tác giả -->
+            <div class="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; 2026 Công ty TNHH TM - SX Dương Dung. Đã đăng ký bản quyền.</p>
+                <p class="mt-2 md:mt-0">Thiết kế & Tối ưu bởi <a href="https://giahao99vn.github.io/giahaoone" target="_blank" class="font-black text-blue-900 hover:text-blue-600 transition">GIAHAOONE</a></p>
+            </div>
+        </div>
+    </footer>
+
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
