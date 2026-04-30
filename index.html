@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dương Dung | Giải Pháp Bao Bì Công Nghiệp & Xử Lý Môi Trường</title>
+    
     <!-- Tối ưu SEO cơ bản -->
     <meta name="description" content="Công ty TNHH TM-SX Dương Dung chuyên cung cấp Thùng phuy sắt, Thùng phuy nhựa và Bồn IBC 1000L chất lượng cao. Giải pháp xử lý môi trường toàn diện.">
     <meta name="keywords" content="thùng phuy sắt, thùng phuy nhựa, bồn ibc 1000l, bao bì công nghiệp, lu nhựa, Dương Dung">
@@ -14,10 +15,9 @@
     <meta property="og:url" content="https://giahao99vn.github.io/duongdung/">
     <meta property="og:title" content="Dương Dung | Bao Bì Công Nghiệp & Xử Lý Môi Trường">
     <meta property="og:description" content="Gần 20 năm kinh nghiệm cung cấp Thùng phuy và Bồn IBC 1000L. Chuẩn mực An Toàn - Bền Vững - Tiết Kiệm. Nhận báo giá ngay!">
-    <!-- Link ảnh Thumbnail khi chia sẻ (Bạn cần upload 1 tấm ảnh tên thumbnail.jpg lên GitHub) -->
     <meta property="og:image" content="https://giahao99vn.github.io/duongdung/thumbnail.jpg">
 
-    <!-- Favicon (Icon nhỏ xíu trên tab trình duyệt) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://giahao99vn.github.io/duongdung/favicon.png">
     
     <!-- Tailwind CSS -->
@@ -44,17 +44,17 @@
     <nav class="bg-white/80 backdrop-blur-md shadow-sm p-4 sticky top-0 z-50 transition-all border-b border-gray-100">
         <div class="container mx-auto flex justify-between items-center">
             <!-- Logo -->
-            <a href="#" class="text-3xl font-black text-blue-900 tracking-tighter flex items-center gap-2">
+            <a href="index.html" class="text-3xl font-black text-blue-900 tracking-tighter flex items-center gap-2">
                 <svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V9.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15.211 6.276a1 1 0 000-1.788l-4.764-2.382a1 1 0 00-.894 0L4.789 4.488a1 1 0 000 1.788l4.764 2.382a1 1 0 00.894 0l4.764-2.382zM4.447 8.342A1 1 0 003 9.236V15a1 1 0 00.553.894l4 2A1 1 0 009 17v-5.764a1 1 0 00-.553-.894l-4-2z"></path></svg>
                 DUONGDUNG
             </a>
             
             <!-- Menu Desktop -->
             <ul class="hidden md:flex space-x-8 font-medium text-gray-600">
-                <li class="hover:text-blue-600 cursor-pointer transition">Trang chủ</li>
-                <li class="hover:text-blue-600 cursor-pointer transition">Sản phẩm</li>
-                <li class="hover:text-blue-600 cursor-pointer transition">Năng lực xử lý</li>
-                <li class="hover:text-blue-600 cursor-pointer transition">Liên hệ</li>
+                <li><a href="index.html" class="text-blue-600 font-bold border-b-2 border-blue-600 pb-1">Trang chủ</a></li>
+                <li><a href="san-pham.html" class="hover:text-blue-600 transition">Sản phẩm</a></li>
+                <li><a href="#" class="hover:text-blue-600 transition">Năng lực xử lý</a></li>
+                <li><a href="#" class="hover:text-blue-600 transition">Liên hệ</a></li>
             </ul>
             
             <button onclick="openModal()" class="hidden md:block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-6 py-2.5 rounded-lg hover:shadow-lg hover:-translate-y-0.5 transition-all font-semibold shadow-md">Nhận Báo Giá</button>
@@ -68,10 +68,10 @@
         <!-- Dropdown Mobile -->
         <div id="mobileMenu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 mt-4 pb-6 absolute w-full left-0 shadow-xl">
             <ul class="flex flex-col space-y-4 font-medium text-gray-600 text-center pt-4 px-4">
-                <li class="hover:text-blue-600 cursor-pointer transition py-2 bg-gray-50 rounded-md">Trang chủ</li>
-                <li class="hover:text-blue-600 cursor-pointer transition py-2 bg-gray-50 rounded-md">Sản phẩm</li>
-                <li class="hover:text-blue-600 cursor-pointer transition py-2 bg-gray-50 rounded-md">Năng lực xử lý</li>
-                <li class="hover:text-blue-600 cursor-pointer transition py-2 bg-gray-50 rounded-md">Liên hệ</li>
+                <li><a href="index.html" class="block py-2 bg-blue-50 text-blue-600 font-bold rounded-md">Trang chủ</a></li>
+                <li><a href="san-pham.html" class="block hover:text-blue-600 transition py-2 bg-gray-50 rounded-md">Sản phẩm</a></li>
+                <li><a href="#" class="block hover:text-blue-600 transition py-2 bg-gray-50 rounded-md">Năng lực xử lý</a></li>
+                <li><a href="#" class="block hover:text-blue-600 transition py-2 bg-gray-50 rounded-md">Liên hệ</a></li>
                 <li>
                     <button onclick="openModal(); closeMobileMenu()" class="bg-blue-600 text-white px-8 py-3.5 rounded-lg hover:bg-blue-700 transition font-bold shadow-md w-full mt-2">Nhận Báo Giá Ngay</button>
                 </li>
@@ -92,10 +92,10 @@
             </h1>
             <p class="text-lg md:text-2xl mb-10 text-gray-300 font-light max-w-3xl mx-auto">Gần 20 năm kinh nghiệm cung cấp Thùng phuy và Bồn IBC 1000L chất lượng cao. Chuẩn mực <span class="font-bold text-white">An Toàn - Bền Vững - Tiết Kiệm</span>.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <button class="bg-blue-600 hover:bg-blue-500 hover:scale-105 px-8 py-4 rounded-lg text-lg font-bold transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] text-white flex items-center justify-center">
+                <a href="san-pham.html" class="bg-blue-600 hover:bg-blue-500 hover:scale-105 px-8 py-4 rounded-lg text-lg font-bold transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] text-white flex items-center justify-center">
                     Xem Sản Phẩm
                     <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-                </button>
+                </a>
                 <button onclick="openModal()" class="bg-transparent border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-slate-900 hover:scale-105 px-8 py-4 rounded-lg text-lg font-bold transition-all">Nhận Báo Giá Nhanh</button>
             </div>
         </div>
@@ -186,6 +186,14 @@
                 </div>
 
             </div>
+            
+            <!-- Nút Xem thêm (Link tới san-pham.html) -->
+            <div class="text-center mt-16" data-aos="fade-up">
+                <a href="san-pham.html" class="text-blue-600 font-bold hover:text-blue-800 transition inline-flex items-center justify-center text-lg hover:underline decoration-2 underline-offset-4">
+                    Xem toàn bộ danh mục sản phẩm
+                    <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -261,10 +269,10 @@
                 <div>
                     <h4 class="text-lg font-black text-gray-900 mb-6 uppercase tracking-wider border-b-2 border-blue-600 pb-2 inline-block">Danh Mục</h4>
                     <ul class="space-y-3 font-medium">
-                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thùng Phuy Sắt</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thùng Phuy Nhựa</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Bồn Nhựa IBC 1000L</a></li>
-                        <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Lu / Can Công Nghiệp</a></li>
+                        <li><a href="san-pham.html" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thùng Phuy Sắt</a></li>
+                        <li><a href="san-pham.html" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thùng Phuy Nhựa</a></li>
+                        <li><a href="san-pham.html" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Bồn Nhựa IBC 1000L</a></li>
+                        <li><a href="san-pham.html" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Lu / Can Công Nghiệp</a></li>
                         <li><a href="#" class="text-gray-600 hover:text-blue-600 transition flex items-center"><svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>Thu Mua Phế Liệu</a></li>
                     </ul>
                 </div>
@@ -359,7 +367,6 @@
     <!-- ============================================== -->
     <!-- JAVASCRIPT ĐIỀU KHIỂN HỆ THỐNG -->
     <!-- ============================================== -->
-    <!-- Thư viện AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     
     <script>
@@ -390,7 +397,6 @@
             updateCount();
         };
 
-        // Chờ scroll đến khu vực chữ số mới bắt đầu đếm
         const observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
