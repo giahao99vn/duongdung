@@ -49,6 +49,7 @@
             </ul>
         </div>
     </nav>
+
     <!-- Hero Section -->
     <section class="relative bg-slate-900 text-white h-[85vh] flex items-center justify-center">
         <div class="absolute inset-0 bg-gradient-to-r from-blue-900 to-slate-900 opacity-90"></div>
@@ -225,6 +226,7 @@
                     <!-- Khung chứa bản đồ -->
                     <div class="h-48 w-full rounded-lg overflow-hidden border border-gray-300 shadow-inner">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d291.2903411038393!2d106.5981006474929!3d10.802115818023902!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b8e92b6254d%3A0x2ce50199b116add5!2zQ8O0bmcgVHkgVG5oaCBUbSAmIFN4IETGsMahbmcgRHVuZw!5e0!3m2!1svi!2s!4v1777563587906!5m2!1svi!2s"
+                            width="100%" 
                             height="100%" 
                             style="border:0;" 
                             allowfullscreen="" 
@@ -265,40 +267,40 @@
             <p class="text-sm text-gray-500 mb-6">Vui lòng để lại thông tin, Dương Dung sẽ liên hệ tư vấn và báo giá sỉ tốt nhất cho bạn.</p>
 
             <!-- Nội dung Form -->
-            <form action="#" method="POST" class="space-y-4">
+            <form name="submit-to-google-sheet" action="https://script.google.com/macros/s/AKfycbxc8MZ6fTm_w9QVwj5XoOVSBL_dD2m8-gVPhORj-M2pxvBX3S62B-VqOjuCkOGqJrbi/exec" method="POST" class="space-y-4">
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Họ và Tên / Tên Công Ty <span class="text-red-500">*</span></label>
-                    <input type="text" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: Nguyễn Văn A - Cty TNHH ABC">
+                    <input type="text" name="Ho_Va_Ten" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: Nguyễn Văn A - Cty TNHH ABC">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Số Điện Thoại Zalo <span class="text-red-500">*</span></label>
-                    <input type="tel" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: 0903 716 490">
+                    <input type="tel" name="So_Dien_Thoai" required class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: 0903 716 490">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Sản Phẩm Quan Tâm</label>
-                    <select class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition cursor-pointer">
-                        <option value="thung_phuy_sat">Thùng Phuy Sắt 220L</option>
-                        <option value="thung_phuy_nhua">Thùng Phuy Nhựa 220L</option>
-                        <option value="bon_ibc">Bồn Nhựa IBC 1000L</option>
-                        <option value="lu_nhua">Lu Nhựa / Can Nhựa</option>
-                        <option value="dich_vu_khac">Thu Mua Phế Liệu / Khác</option>
+                    <select name="San_Pham_Quan_Tam" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition cursor-pointer">
+                        <option value="Thùng Phuy Sắt 220L">Thùng Phuy Sắt 220L</option>
+                        <option value="Thùng Phuy Nhựa 220L">Thùng Phuy Nhựa 220L</option>
+                        <option value="Bồn Nhựa IBC 1000L">Bồn Nhựa IBC 1000L</option>
+                        <option value="Lu Nhựa / Can Nhựa">Lu Nhựa / Can Nhựa</option>
+                        <option value="Thu Mua Phế Liệu / Khác">Thu Mua Phế Liệu / Khác</option>
                     </select>
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Yêu Cầu Chi Tiết (Số lượng, tình trạng...)</label>
-                    <textarea rows="3" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: Tôi cần báo giá 50 bồn IBC 1000L mới 100% giao tại Hóc Môn..."></textarea>
+                    <textarea name="Yeu_Cau_Chi_Tiet" rows="3" class="w-full px-4 py-2.5 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" placeholder="VD: Tôi cần báo giá 50 bồn IBC 1000L mới 100% giao tại Hóc Môn..."></textarea>
                 </div>
                 
                 <!-- Nút Gửi -->
-                <button type="button" onclick="alert('Cảm ơn bạn! Yêu cầu báo giá đã được gửi đến ban giám đốc. Chúng tôi sẽ liên hệ lại ngay.')" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-md transition mt-4 flex justify-center items-center">
-                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
-                    Gửi Yêu Cầu Báo Giá
+                <button type="submit" id="submitBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-md transition mt-4 flex justify-center items-center">
+                    <span id="btnText">Gửi Yêu Cầu Báo Giá</span>
+                    <svg id="btnIcon" class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- JavaScript Điều khiển Modal -->
+    <!-- JavaScript -->
     <script>
         const modal = document.getElementById('quoteModal');
         const overlay = document.getElementById('modalOverlay');
@@ -316,7 +318,7 @@
             modal.classList.remove('flex');
         }
 
-        // Bắt sự kiện
+        // Bắt sự kiện Modal
         closeBtn.addEventListener('click', closeModal);
         overlay.addEventListener('click', closeModal);
 
@@ -335,6 +337,42 @@
         function closeMobileMenu() {
             mobileMenu.classList.add('hidden');
         }
+
+        // ==========================================
+        // Xử lý gửi Form về Google Sheets
+        // ==========================================
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxc8MZ6fTm_w9QVwj5XoOVSBL_dD2m8-gVPhORj-M2pxvBX3S62B-VqOjuCkOGqJrbi/exec';
+        const form = document.forms['submit-to-google-sheet'];
+        const btnText = document.getElementById('btnText');
+        const btnIcon = document.getElementById('btnIcon');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // Ngăn trình duyệt chuyển trang
+            
+            // Đổi text nút thành Đang gửi...
+            btnText.innerHTML = "Đang gửi dữ liệu...";
+            btnIcon.classList.add('hidden');
+
+            // Gửi dữ liệu ngầm
+            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => {
+                    alert('Cảm ơn bạn! Yêu cầu báo giá đã được gửi thành công.');
+                    form.reset(); // Xóa trắng form
+                    closeModal(); // Đóng popup
+                    
+                    // Khôi phục lại nút
+                    btnText.innerHTML = "Gửi Yêu Cầu Báo Giá";
+                    btnIcon.classList.remove('hidden');
+                })
+                .catch(error => {
+                    console.error('Lỗi rồi!', error.message);
+                    alert('Có lỗi xảy ra, vui lòng thử lại sau hoặc gọi trực tiếp Hotline!');
+                    
+                    // Khôi phục lại nút nếu lỗi
+                    btnText.innerHTML = "Gửi Yêu Cầu Báo Giá";
+                    btnIcon.classList.remove('hidden');
+                })
+        });
     </script>
 
 </body>
