@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dương Dung | Bao bì Công nghiệp & Xử lý Môi trường</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Đưa thư viện model-viewer lên Head để tối ưu load -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
@@ -33,6 +35,7 @@
             </div>
         </div>
     </section>
+
     <!-- Product Grid Section -->
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
@@ -47,78 +50,76 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
                 
                 <!-- Card 1: Thùng Phuy Sắt -->
-                <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 border border-gray-100 flex flex-col">
+                    <div class="h-72 w-full bg-white relative">
+                        <model-viewer 
+                            src="https://cdn.jsdelivr.net/gh/giahao99vn/duongdung/phisat.glb" 
+                            alt="Mô hình 3D Thùng Phuy Sắt 220L Dương Dung" 
+                            auto-rotate 
+                            camera-controls 
+                            rotation-per-second="30deg"
+                            interaction-prompt="hover"
+                            shadow-intensity="1"
+                            class="w-full h-full bg-transparent outline-none cursor-grab active:cursor-grabbing">
+                        </model-viewer>
 
-<div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 border border-gray-100 flex flex-col">
-    <div class="h-72 w-full bg-white relative">
-        <model-viewer 
-            src="https://cdn.jsdelivr.net/gh/giahao99vn/duongdung/phisat.glb" 
-            alt="Mô hình 3D Thùng Phuy Sắt 220L Dương Dung" 
-            auto-rotate 
-            camera-controls 
-            rotation-per-second="30deg"
-            interaction-prompt="hover"
-            shadow-intensity="1"
-            class="w-full h-full bg-transparent outline-none cursor-grab active:cursor-grabbing">
-        </model-viewer>
-
-        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded shadow-md z-10 flex items-center">
-            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"></path></svg>
-            Tương tác 3D
-        </div>
-    </div>
-    
-    <div class="p-6 bg-gray-50 flex-grow">
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Thùng Phuy nhựa 220L</h3>
-        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Đa dạng dung tích từ 30L đến 220L. Chất liệu nhựa HDPE nguyên sinh, an toàn thực phẩm và chống ăn mòn hóa học.</p>
-        <div class="flex justify-between items-center mt-auto">
-            <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
-            <button class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Chi Tiết</button>
-        </div>
-    </div>
-</div>
-                <!-- Card 2: Thùng Phuy Nhựa -->
-                <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-
-<div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 border border-gray-100 flex flex-col">
-    <div class="h-72 w-full bg-white relative">
-        <model-viewer 
-            src="https://cdn.jsdelivr.net/gh/giahao99vn/duongdung/phinhua.glb" 
-            alt="Mô hình 3D Thùng Phuy Nhựa 220L Dương Dung" 
-            auto-rotate 
-            camera-controls 
-            rotation-per-second="30deg"
-            interaction-prompt="hover"
-            shadow-intensity="1"
-            class="w-full h-full bg-transparent outline-none cursor-grab active:cursor-grabbing">
-        </model-viewer>
-
-        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded shadow-md z-10 flex items-center">
-            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"></path></svg>
-            Tương tác 3D
-        </div>
-    </div>
-    
-    <div class="p-6 bg-gray-50 flex-grow">
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Thùng Phuy Sắt 220L</h3>
-        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Thùng phuy mới 100% hoặc qua xử lý chuẩn an toàn. Phù hợp đựng hóa chất, dung môi, dầu nhớt.</p>
-        <div class="flex justify-between items-center mt-auto">
-            <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
-            <button class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Chi Tiết</button>
-        </div>
-    </div>
-</div>
-                <!-- Card 3: Bồn IBC 1000L -->
-                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border border-gray-100">
-                    <div class="h-64 bg-gray-200 flex items-center justify-center">
-                        <span class="text-gray-500 font-medium">[Hình ảnh Bồn IBC 1000L]</span>
+                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded shadow-md z-10 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"></path></svg>
+                            Tương tác 3D
+                        </div>
                     </div>
-                    <div class="p-6">
+                    
+                    <div class="p-6 bg-gray-50 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Thùng Phuy Sắt 220L</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Thùng phuy mới 100% hoặc qua sử dụng xử lý sạch. Phù hợp đựng hóa chất, dung môi, dầu nhớt.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
+                            <button class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Chi Tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Thùng Phuy Nhựa -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 border border-gray-100 flex flex-col">
+                    <div class="h-72 w-full bg-white relative">
+                        <model-viewer 
+                            src="https://cdn.jsdelivr.net/gh/giahao99vn/duongdung/phinhua.glb" 
+                            alt="Mô hình 3D Thùng Phuy Nhựa 220L Dương Dung" 
+                            auto-rotate 
+                            camera-controls 
+                            rotation-per-second="30deg"
+                            interaction-prompt="hover"
+                            shadow-intensity="1"
+                            class="w-full h-full bg-transparent outline-none cursor-grab active:cursor-grabbing">
+                        </model-viewer>
+
+                        <div class="absolute top-4 left-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded shadow-md z-10 flex items-center">
+                            <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"></path></svg>
+                            Tương tác 3D
+                        </div>
+                    </div>
+                    
+                    <div class="p-6 bg-gray-50 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Thùng Phuy Nhựa 220L</h3>
+                        <p class="text-gray-600 text-sm mb-6 line-clamp-2">Dùng chuột để xoay 360°. Đa dạng dung tích từ 30L đến 220L. Chất liệu nhựa HDPE nguyên sinh, an toàn thực phẩm và chống ăn mòn.</p>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
+                            <button class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Chi Tiết</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Bồn IBC 1000L -->
+                <div class="bg-gray-50 rounded-xl overflow-hidden shadow-sm hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border border-gray-100 flex flex-col">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center">
+                        <span class="text-gray-500 font-medium">[Khu vực chờ mô hình Bồn IBC 1000L]</span>
+                    </div>
+                    <div class="p-6 flex-grow">
                         <h3 class="text-xl font-bold text-gray-900 mb-2">Bồn Nhựa IBC 1000L</h3>
                         <p class="text-gray-600 text-sm mb-6 line-clamp-2">Bồn IBC Tank 1000 lít có khung thép mạ kẽm bảo vệ. Thiết kế tối ưu cho xe nâng, chuyên dụng lưu trữ khối lượng lớn.</p>
-                        <div class="flex justify-between items-center">
-                            <span class="text-blue-600 font-bold text-sm">Liên hệ báo giá</span>
-                            <button class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Xem Chi Tiết</button>
+                        <div class="flex justify-between items-center mt-auto">
+                            <span class="text-blue-600 font-bold text-sm">Báo giá: 0903.716.490</span>
+                            <button class="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded text-sm font-semibold transition">Chi Tiết</button>
                         </div>
                     </div>
                 </div>
@@ -134,6 +135,7 @@
             </div>
         </div>
     </section>
+
     <!-- About Us & Stats Section -->
     <section class="py-20 bg-slate-900 text-white">
         <div class="container mx-auto px-4 max-w-6xl">
@@ -175,6 +177,7 @@
             </div>
         </div>
     </section>
+
     <!-- Footer Section -->
     <footer class="bg-gray-100 text-gray-700 pt-16 pb-8 border-t border-gray-200">
         <div class="container mx-auto px-4 max-w-6xl">
@@ -217,7 +220,7 @@
             <!-- Copyright -->
             <div class="border-t border-gray-300 pt-8 text-center text-sm text-gray-500">
                 <p>&copy; 2026 Công ty TNHH TM - SX Dương Dung. Đã đăng ký bản quyền.</p>
-                <p class="mt-1">Thiết kế lại bởi GIAHAOONE</p>
+                <p class="mt-1 font-semibold text-blue-900">Thiết kế lại bởi GIAHAOONE</p>
             </div>
         </div>
     </footer>
